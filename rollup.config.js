@@ -15,7 +15,7 @@ const production = !process.env.ROLLUP_WATCH
 
 export default {
 
-	input: "app/javascript/packs/application.js",
+	input: "app/javascript/bundle.js",
 	perf: true,
 	cache: !production,
 	treeshake: production,
