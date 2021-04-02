@@ -684,6 +684,11 @@ delegates@^1.0.0:
   resolved "https://registry.yarnpkg.com/delegates/-/delegates-1.0.0.tgz#84c6e159b81904fdca59a0ef44cd870d31250f9a"
   integrity sha1-hMbhWbgZBP3KWaDvRM2HDTElD5o=
 
+dequal@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/dequal/-/dequal-2.0.2.tgz#85ca22025e3a87e65ef75a7a437b35284a7e319d"
+  integrity sha512-q9K8BlJVxK7hQYqa6XISGmBZbtQQWVXSrRrWreHC94rMt1QL/Impruc+7p2CYSYuVIUr+YCt6hjrs1kkdJRTug==
+
 detect-indent@^6.0.0:
   version "6.0.0"
   resolved "https://registry.yarnpkg.com/detect-indent/-/detect-indent-6.0.0.tgz#0abd0f549f69fc6659a254fe96786186b6f528fd"
@@ -1543,6 +1548,11 @@ node-sass@^5.0.0:
     stdout-stream "^1.4.0"
     "true-case-path" "^1.0.2"
 
+nope-validator@^0.11.3:
+  version "0.11.3"
+  resolved "https://registry.yarnpkg.com/nope-validator/-/nope-validator-0.11.3.tgz#e58f4d67e8d5c7f29f0429de9db8d25e8c1fbf2a"
+  integrity sha512-O/XLm+qDhE+t3gktk5keloOs4wZaPYb3jxmdZ6jiIpXv8MFmKthLN9CPBK21vZYzCXtEODj+sU3jx8xeDUjRXg==
+
 nopt@^5.0.0:
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/nopt/-/nopt-5.0.0.tgz#530942bb58a512fccafe53fe210f13a25355dc88"
@@ -2286,6 +2296,12 @@ svelte@^3.37.0:
   version "3.37.0"
   resolved "https://registry.yarnpkg.com/svelte/-/svelte-3.37.0.tgz#dc7cd24bcc275cdb3f8c684ada89e50489144ccd"
   integrity sha512-TRF30F4W4+d+Jr2KzUUL1j8Mrpns/WM/WacxYlo5MMb2E5Qy2Pk1Guj6GylxsW9OnKQl1tnF8q3hG/hQ3h6VUA==
+
+sveltestrap-forms-lib@hazg/sveltestrap-forms-lib:
+  version "0.0.0-semantically-released"
+  resolved "https://codeload.github.com/hazg/sveltestrap-forms-lib/tar.gz/7edb2ce96a6fe19d63a0206bfa535e906c07b7ef"
+  dependencies:
+    dequal "^2.0.2"
 
 sveltestrap@^3.14.0:
   version "3.14.0"

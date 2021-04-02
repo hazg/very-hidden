@@ -59,9 +59,10 @@ export async function request(url, searchParams = false, params = {}, method) {
 
   // Can't use $isActive('/login').
   // First API request in bundle.js No routes now
-  if (res.status == 401 && window.location.pathname != '/login') {
-    window.location = '/login'
-  }
+
+  // if (res.status == 401 && window.location.pathname != '/login') {
+  //   window.location = '/login'
+  // }
 
   let json = false
   // If status not "no content" try to get json
@@ -79,8 +80,6 @@ export async function request(url, searchParams = false, params = {}, method) {
       if(!(res.status > 200 && res.status < 226)){
         status = res.status + ' '
       }
-
-
       toast.push(status + message, res)
       console.error(status + message, res)
     }
