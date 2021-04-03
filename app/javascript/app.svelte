@@ -6,22 +6,18 @@
   import { Navbar, NavItem, NavLink, Nav } from 'sveltestrap'
   import './stylesheets/bootstrap.css'
 
-
-  function signOut(){
-    User.signOut()
-  }
 </script>
 
 <Navbar>
   <Nav>
-    <NavItem>
-      {#if User.isLoggedIn() }
-        <NavLink href='#' on:click={signOut}>Выход</NavLink>
-      {:else}
-        <NavLink href='/register'>Регистрация</NavLink>
-        <NavLink href='/login'>Вход</NavLink>
-      {/if}
-    </NavItem>
+    {#if User.isLoggedIn() }
+      <NavItem>
+        <NavLink href='#' on:click={User.signOut}>Выход</NavLink>
+      </NavItem>
+    {:else}
+      <NavItem><NavLink href='/register'>Регистрация</NavLink></NavItem>
+      <NavItem><NavLink href='/login'>Вход</NavLink></NavItem>
+    {/if}
   </Nav>
 </Navbar>
 <Router {routes} />
