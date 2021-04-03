@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_03_083751) do
+ActiveRecord::Schema.define(version: 2021_04_03_085506) do
 
-  create_table "rollups", force: :cascade do |t|
+  create_table "rollups", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "interval", null: false
     t.datetime "time", null: false
@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2021_04_03_083751) do
     t.index ["name", "interval", "time"], name: "index_rollups_on_name_and_interval_and_time", unique: true
   end
 
-  create_table "shortened_urls", force: :cascade do |t|
+  create_table "shortened_urls", id: :integer, charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.integer "owner_id"
     t.string "owner_type", limit: 20
     t.text "url", null: false
@@ -33,10 +33,10 @@ ActiveRecord::Schema.define(version: 2021_04_03_083751) do
     t.index ["category"], name: "index_shortened_urls_on_category"
     t.index ["owner_id", "owner_type"], name: "index_shortened_urls_on_owner_id_and_owner_type"
     t.index ["unique_key"], name: "index_shortened_urls_on_unique_key", unique: true
-    t.index ["url"], name: "index_shortened_urls_on_url"
+    t.index ["url"], name: "index_shortened_urls_on_url", length: 5
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 2021_04_03_083751) do
     t.datetime "last_sign_in_at"
     t.datetime "current_sign_in_ip"
     t.datetime "last_sign_in_ip"
-    t.datetime "sign_in_count"
+    t.integer "sign_in_count", default: 0, null: false
     t.string "provider"
     t.string "uid", default: "", null: false
     t.text "tokens"

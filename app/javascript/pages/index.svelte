@@ -16,6 +16,7 @@
         .required($_('where is the link?')),
     }).validate(values),
     onSubmit: (values) => {
+      api.post( 'links', values )
       console.log(values)
     }
   }

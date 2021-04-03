@@ -61,7 +61,6 @@ gem 'devise_token_auth', github: 'lynndylanhurley/devise_token_auth'
 
 
 gem 'haml'
-
 gem 'pagy'
-
-gem 'shortener'
+gem 'shortener', github: 'jpmcgrath/shortener'
+gem 'mysql2'

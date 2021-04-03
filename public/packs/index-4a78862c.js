@@ -1,7 +1,7 @@
 
 (function(l, r) { if (l.getElementById('livereloadscript')) return; r = l.createElement('script'); r.async = 1; r.src = '//' + (window.location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1'; r.id = 'livereloadscript'; l.getElementsByTagName('head')[0].appendChild(r) })(window.document);
 import { g as globals, c as create_component, m as mount_component, t as transition_in, a as transition_out, d as destroy_component, b as dispatch_dev, e as text, i as insert_dev, s as set_data_dev, f as detach_dev, F as FormGroup, B as Button, h as space, j as assign, k as get_spread_update, l as get_spread_object, C as Card, v as validate_store, X, n as component_subscribe, o as validate_slots, S as SvelteComponentDev, p as init, q as safe_not_equal } from './bundle.js';
-import { F as Field, a as Form_1, c as createForm } from './index-69c2fccd.js';
+import { F as Field, a as Form_1, c as createForm } from './index-d390b550.js';
 
 class NopeReference {
     constructor(key) {
@@ -655,7 +655,7 @@ const Nope = {
 const { console: console_1 } = globals;
 const file = "app/javascript/pages/index.svelte";
 
-// (27:4) <FormGroup label={$_('link')} class="form-group-fixed-height">
+// (28:4) <FormGroup label={$_('link')} class="form-group-fixed-height">
 function create_default_slot_3(ctx) {
 	let field;
 	let current;
@@ -699,14 +699,14 @@ function create_default_slot_3(ctx) {
 		block,
 		id: create_default_slot_3.name,
 		type: "slot",
-		source: "(27:4) <FormGroup label={$_('link')} class=\\\"form-group-fixed-height\\\">",
+		source: "(28:4) <FormGroup label={$_('link')} class=\\\"form-group-fixed-height\\\">",
 		ctx
 	});
 
 	return block;
 }
 
-// (30:4) <Button type="submit">
+// (31:4) <Button type="submit">
 function create_default_slot_2(ctx) {
 	let t_value = /*$_*/ ctx[0]("short") + "";
 	let t;
@@ -730,14 +730,14 @@ function create_default_slot_2(ctx) {
 		block,
 		id: create_default_slot_2.name,
 		type: "slot",
-		source: "(30:4) <Button type=\\\"submit\\\">",
+		source: "(31:4) <Button type=\\\"submit\\\">",
 		ctx
 	});
 
 	return block;
 }
 
-// (26:2) <Form {...formProps}>
+// (27:2) <Form {...formProps}>
 function create_default_slot_1(ctx) {
 	let formgroup;
 	let t;
@@ -814,14 +814,14 @@ function create_default_slot_1(ctx) {
 		block,
 		id: create_default_slot_1.name,
 		type: "slot",
-		source: "(26:2) <Form {...formProps}>",
+		source: "(27:2) <Form {...formProps}>",
 		ctx
 	});
 
 	return block;
 }
 
-// (25:0) <Card>
+// (26:0) <Card>
 function create_default_slot(ctx) {
 	let form;
 	let current;
@@ -875,7 +875,7 @@ function create_default_slot(ctx) {
 		block,
 		id: create_default_slot.name,
 		type: "slot",
-		source: "(25:0) <Card>",
+		source: "(26:0) <Card>",
 		ctx
 	});
 
@@ -954,6 +954,7 @@ function instance($$self, $$props, $$invalidate) {
 			url: Nope.string().url($_("should be an address")).required($_("where is the link?"))
 		}).validate(values),
 		onSubmit: values => {
+			api.post("links", values);
 			console.log(values);
 		}
 	};
@@ -1005,4 +1006,4 @@ class Pages extends SvelteComponentDev {
 }
 
 export default Pages;
-//# sourceMappingURL=index-3082e0ec.js.map
+//# sourceMappingURL=index-4a78862c.js.map

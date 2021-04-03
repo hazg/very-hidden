@@ -1,4 +1,11 @@
 GIT
+  remote: https://github.com/jpmcgrath/shortener.git
+  revision: 3cae7fcdc46ddec1c4a83e4fb6c624efe2f9fd34
+  specs:
+    shortener (0.8.2)
+      voight_kampff (~> 1.1.2)
+
+GIT
   remote: https://github.com/lynndylanhurley/devise_token_auth.git
   revision: 5c0baba8aaf005d03daeaf425d555739d3215603
   specs:
@@ -128,6 +135,7 @@ GEM
     mini_portile2 (2.5.0)
     minitest (5.14.4)
     msgpack (1.4.2)
+    mysql2 (0.5.3)
     nio4r (2.5.7)
     nokogiri (1.11.2)
       mini_portile2 (~> 2.5.0)
@@ -194,8 +202,6 @@ GEM
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
-    shortener (0.8.2)
-      voight_kampff (~> 1.1.2)
     spring (2.1.1)
     sprockets (4.0.2)
       concurrent-ruby (~> 1.0)
@@ -246,6 +252,7 @@ DEPENDENCIES
   haml
   jbuilder (~> 2.7)
   listen (~> 3.3)
+  mysql2
   pagy
   puma (~> 5.0)
   rack-mini-profiler (~> 2.0)
@@ -253,7 +260,7 @@ DEPENDENCIES
   rollups
   sass-rails (>= 6)
   selenium-webdriver
-  shortener
+  shortener!
   spring
   sqlite3 (~> 1.4)
   turbolinks (~> 5)

@@ -6717,19 +6717,19 @@ const _tree = {
       "isPage": true,
       "path": "/index",
       "id": "_index",
-      "component": () => import('./index-3082e0ec.js').then(m => m.default)
+      "component": () => import('./index-4a78862c.js').then(m => m.default)
     },
     {
       "isPage": true,
       "path": "/login",
       "id": "_login",
-      "component": () => import('./login-3251965b.js').then(m => m.default)
+      "component": () => import('./login-8da097e3.js').then(m => m.default)
     },
     {
       "isPage": true,
       "path": "/register",
       "id": "_register",
-      "component": () => import('./register-7ff70908.js').then(m => m.default)
+      "component": () => import('./register-01cef0d6.js').then(m => m.default)
     }
   ],
   "path": "/"
