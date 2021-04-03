@@ -1,8 +1,9 @@
 <script>
-import { User } from "../store/user";
+import { User } from "../store/user"
 // TODO: Change to original package, after commit pull request https://github.com/hazg/svelte-toast/pull/2
 import { SvelteToast, toast } from 'svelte-toast'
-import { FormGroup, Input} from "sveltestrap";
+import { FormGroup, Input} from "sveltestrap"
+import { _ } from 'svelte-i18n'
 
 let email, password
 
@@ -15,7 +16,7 @@ async function formSubmit(data){
     toast.push(res.errors.join('<br />'))
   }else{
     User.signIn(res.token)
-    toast.push('Вошли как '+res.data['email'])
+    toast.push($_('login as') + ' ' +res.data['email'])
     window.location = '/'
   }
 }
@@ -30,7 +31,7 @@ async function formSubmit(data){
   </FormGroup>
 
   <button on:click|preventDefault={formSubmit} class="btn btn-secondary">
-    Войти
+    {$_('enter')}
   </button>
   <SvelteToast />
 </form>

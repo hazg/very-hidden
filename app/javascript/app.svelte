@@ -4,7 +4,21 @@
   import { Router } from '@roxi/routify'
   import { routes } from '../../.routify/routes'
   import { Navbar, NavItem, NavLink, Nav } from 'sveltestrap'
+  import { _, addMessages, init, getLocaleFromNavigator } from 'svelte-i18n'
   import './stylesheets/bootstrap.css'
+
+  import en from './locales/en.json'; addMessages('en', en);
+  import ru from './locales/ru.json'; addMessages('ru', ru);
+
+  init({
+    fallbackLocale: 'en',
+    initialLocale: getLocaleFromNavigator(),
+  })
+  console.log(
+
+  getLocaleFromNavigator()
+
+  )
 
 </script>
 
@@ -12,11 +26,11 @@
   <Nav>
     {#if User.isLoggedIn() }
       <NavItem>
-        <NavLink href='#' on:click={User.signOut}>Выход</NavLink>
+        <NavLink href='#' on:click={User.signOut}>{$_('exit')}</NavLink>
       </NavItem>
     {:else}
-      <NavItem><NavLink href='/register'>Регистрация</NavLink></NavItem>
-      <NavItem><NavLink href='/login'>Вход</NavLink></NavItem>
+      <NavItem><NavLink href='/register'>{$_('register')}</NavLink></NavItem>
+      <NavItem><NavLink href='/login'>{$_('enter')}</NavLink></NavItem>
     {/if}
   </Nav>
 </Navbar>

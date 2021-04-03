@@ -3,7 +3,8 @@ import { User } from "../store/user";
 // TODO: Change to original package, after commit pull request https://github.com/hazg/svelte-toast/pull/2
 import { Form, Field, Select } from "sveltestrap-forms-lib";
 import { SvelteToast, toast } from 'svelte-toast'
-import { FormGroup, Input} from "sveltestrap";
+import { FormGroup, Input} from "sveltestrap"
+import { _ } from 'svelte-i18n'
 
 let email, password, passwordConfirmation
 
@@ -33,7 +34,7 @@ async function formSubmit(data){
   </FormGroup>
 
   <button on:click|preventDefault={formSubmit} class="btn btn-secondary">
-    Войти
+    {$_('register')}
   </button>
   <SvelteToast />
 </form>
