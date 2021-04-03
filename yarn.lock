@@ -2381,10 +2381,9 @@ sveltestrap-forms-lib@hazg/sveltestrap-forms-lib:
   dependencies:
     dequal "^2.0.2"
 
-sveltestrap@^3.14.0:
-  version "3.14.0"
-  resolved "https://registry.yarnpkg.com/sveltestrap/-/sveltestrap-3.14.0.tgz#890bd9b2929ef0f6cf51cfada05177642d236517"
-  integrity sha512-tg4kPiCXGxDW5DVthE42HW/B4t5Msi9yewzSsFGmjbs/S6HfLGuqq4XV7llVtoCZDG2vh0wsW6bWcvIfkDKMag==
+sveltestrap@bestguy/sveltestrap#v5:
+  version "5.0.0-beta.3"
+  resolved "https://codeload.github.com/bestguy/sveltestrap/tar.gz/ce3e027d8f909f9019ab7e52d830d8ea4f60907f"
   dependencies:
     "@popperjs/core" "^2.6.0"
 

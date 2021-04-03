@@ -25,7 +25,7 @@
     "svelte-i18n": "^3.3.9",
     "svelte-preprocess": "^4.7.0",
     "svelte-toast": "hazg/svelte-toast",
-    "sveltestrap": "^3.14.0",
+    "sveltestrap": "bestguy/sveltestrap#v5",
     "sveltestrap-forms-lib": "hazg/sveltestrap-forms-lib",
     "turbolinks": "^5.2.0"
   },

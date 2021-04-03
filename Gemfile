@@ -60,6 +60,8 @@ gem 'devise-i18n', github: 'tigrish/devise-i18n'
 gem 'devise_token_auth', github: 'lynndylanhurley/devise_token_auth'
 
 
-gem "haml"
+gem 'haml'
 
-gem "pagy", "~> 3.12"
+gem 'pagy'
+
+gem 'shortener'

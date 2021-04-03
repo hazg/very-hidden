@@ -1,34 +1,32 @@
 <script>
-  import { Card, FormGroup } from 'sveltestrap'
-  import { Form, Field, Select } from "sveltestrap-forms-lib";
+  import { Button, Card, FormGroup } from 'sveltestrap'
+  import { Form, Field, createForm } from "sveltestrap-forms-lib";
   import nope from "nope-validator";
-  import { onMount } from 'svelte'
   import { _ } from 'svelte-i18n'
 
-  var url, schema
-  onMount(async () => {
-
-    schema = nope.object().shape({
+  let url = ''
+  // const { form, handleChange, handleSubmit } = createForm({
+  let formProps = {
+    initialValues: {
+      url
+    },
+    validate: values => nope.object().shape({
       url: nope.string()
         .url($_('should be an address'))
         .required($_('where is the link?')),
-    })
-
-  })
-
-  const formProps = {
-    initialValues:{
-    },
-    validate: values => schema.validate(values),
-    onSubmit: async values => {
+    }).validate(values),
+    onSubmit: (values) => {
       console.log(values)
     }
   }
+
 </script>
 
-{url}
-<Form {...formProps}>
-  <FormGroup label={$_('link')} class="form-group-fixed-height"></FormGroup>
-  <Field placeholder={$_('what are we hiding?')} bind:value={url} />
-</Form>
-<Card>Hello world!</Card>
+<Card>
+  <Form {...formProps}>
+    <FormGroup label={$_('link')} class="form-group-fixed-height">
+      <Field placeholder={$_('what are we hiding?')} name="url" />
+    </FormGroup>
+    <Button type="submit">{$_('short')}</Button>
+  </Form>
+</Card>
