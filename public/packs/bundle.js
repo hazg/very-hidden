@@ -6717,19 +6717,19 @@ const _tree = {
       "isPage": true,
       "path": "/index",
       "id": "_index",
-      "component": () => import('./index-4a78862c.js').then(m => m.default)
+      "component": () => import('./index-4613246d.js').then(m => m.default)
     },
     {
       "isPage": true,
       "path": "/login",
       "id": "_login",
-      "component": () => import('./login-8da097e3.js').then(m => m.default)
+      "component": () => import('./login-5107c0f4.js').then(m => m.default)
     },
     {
       "isPage": true,
       "path": "/register",
       "id": "_register",
-      "component": () => import('./register-01cef0d6.js').then(m => m.default)
+      "component": () => import('./register-5ff3bcd8.js').then(m => m.default)
     }
   ],
   "path": "/"
@@ -38932,7 +38932,7 @@ var en = {
 	enter: enter,
 	"should be an address": "Should be an address",
 	"where is the link?": "Where is the link?",
-	"what are we hiding?": "What are we hiding?",
+	"what are we hiding?": "Type link here",
 	link: link,
 	short: short
 };
@@ -38952,7 +38952,7 @@ var ru = {
 	enter: enter$1,
 	"should be an address": "Должно быть адресом",
 	"where is the link?": "Где ссылка?",
-	"what are we hiding?": "Что прячем?",
+	"what are we hiding?": "Вставьте ссылку",
 	link: link$1,
 	short: short$1
 };
@@ -39649,5 +39649,5 @@ document.addEventListener('DOMContentLoaded', async () => {
 // Turbolinks.start()
 // ActiveStorage.start()
 
-export { toast as $, compute_rest_props as A, Button as B, Card as C, setContext as D, exclude_internal_props as E, FormGroup as F, element as G, set_attributes as H, add_location as I, append_dev as J, empty as K, noop as L, getContext as M, listen_dev as N, group_outros as O, check_outros as P, run_all as Q, Input as R, SvelteComponentDev as S, binding_callbacks as T, bind as U, add_flush_callback as V, SvelteToast as W, X, attr_dev as Y, prevent_default as Z, User as _, transition_out as a, dispatch_dev as b, create_component as c, destroy_component as d, text as e, detach_dev as f, globals as g, space as h, insert_dev as i, assign as j, get_spread_update as k, get_spread_object as l, mount_component as m, component_subscribe as n, validate_slots as o, init as p, safe_not_equal as q, derived as r, set_data_dev as s, transition_in as t, get_store_value as u, validate_store as v, writable as w, create_slot as x, update_slot as y, Form as z };
+export { check_outros as $, set_data_dev as A, binding_callbacks as B, bind as C, Button as D, space as E, add_flush_callback as F, get_spread_object as G, Card as H, InputGroup as I, validate_store as J, component_subscribe as K, writable as L, derived as M, get_store_value as N, create_slot as O, update_slot as P, Form as Q, compute_rest_props as R, SvelteComponentDev as S, setContext as T, set_attributes as U, append_dev as V, empty as W, X, getContext as Y, listen_dev as Z, group_outros as _, assign as a, run_all as a0, Input as a1, FormGroup as a2, SvelteToast as a3, prevent_default as a4, User as a5, toast as a6, set_svg_attributes as b, createCommonjsModule as c, add_location as d, get_spread_update as e, detach_dev as f, getDefaultExportFromCjs as g, dispatch_dev as h, insert_dev as i, element as j, attr_dev as k, exclude_internal_props as l, init as m, noop as n, onMount as o, safe_not_equal as p, globals as q, create_component as r, svg_element as s, toggle_class as t, mount_component as u, validate_slots as v, transition_in as w, transition_out as x, destroy_component as y, text as z };
 //# sourceMappingURL=bundle.js.map

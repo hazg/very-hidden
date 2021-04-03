@@ -22,11 +22,13 @@
     "rollup-plugin-uglify-es": "^0.0.1",
     "rollup-plugin-visualizer": "^5.2.1",
     "svelte": "^3.37.0",
+    "svelte-dynamic-iconify": "hazg/svelte-dynamic-iconify",
     "svelte-i18n": "^3.3.9",
     "svelte-preprocess": "^4.7.0",
     "svelte-toast": "hazg/svelte-toast",
     "sveltestrap": "bestguy/sveltestrap#v5",
     "sveltestrap-forms-lib": "hazg/sveltestrap-forms-lib",
+    "sveltestrap-table": "hazg/sveltestrap-table",
     "turbolinks": "^5.2.0"
   },
   "version": "0.1.0",

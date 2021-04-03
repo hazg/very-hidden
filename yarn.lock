@@ -47,6 +47,16 @@
     "@formatjs/ecma402-abstract" "1.6.4"
     tslib "^2.1.0"
 
+"@iconify/iconify@>1.0.0":
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/@iconify/iconify/-/iconify-1.0.7.tgz#22e6d384482995738746eeb38b9b76588df41d57"
+  integrity sha512-qCbH1V/Ceg302lrgBiiXCZAyqMAq8KqsHYokCpUvgBH6yYfAmvlSkEEBrmJdHofQvfY/+xaeQcsOOTjW7JakNw==
+
+"@iconify/svelte@>1.0.0":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@iconify/svelte/-/svelte-1.0.4.tgz#0fd5877ca8c7fa60cdb74f9c64b2490f019e4859"
+  integrity sha512-Bjr4UMJUsMCra1lpMYIijLZJustalA7FuBldV9B7IsaeKGZ06rcmgeVUYJqrKJ/0bhRg/chcKasLjUlFqWIoMQ==
+
 "@nodelib/fs.scandir@2.1.4":
   version "2.1.4"
   resolved "https://registry.yarnpkg.com/@nodelib/fs.scandir/-/fs.scandir-2.1.4.tgz#d4b3549a5db5de2683e0c1071ab4f140904bbf69"
@@ -2345,6 +2355,10 @@ supports-color@^7.0.0, supports-color@^7.1.0:
   dependencies:
     has-flag "^4.0.0"
 
+svelte-dynamic-iconify@hazg/svelte-dynamic-iconify:
+  version "1.0.9"
+  resolved "https://codeload.github.com/hazg/svelte-dynamic-iconify/tar.gz/bda000fd9b2d1432a5b0d4489ee77c1142edfdd4"
+
 svelte-i18n@^3.3.9:
   version "3.3.9"
   resolved "https://registry.yarnpkg.com/svelte-i18n/-/svelte-i18n-3.3.9.tgz#33da4b8da2b482db3130814d9398f31ae2e2c1f9"
@@ -2370,7 +2384,7 @@ svelte-toast@hazg/svelte-toast:
   version "0.1.3"
   resolved "https://codeload.github.com/hazg/svelte-toast/tar.gz/0c6d17141505ff6b454f253e2c1df9c798fe0135"
 
-svelte@^3.37.0:
+svelte@^3.0.0, svelte@^3.37.0:
   version "3.37.0"
   resolved "https://registry.yarnpkg.com/svelte/-/svelte-3.37.0.tgz#dc7cd24bcc275cdb3f8c684ada89e50489144ccd"
   integrity sha512-TRF30F4W4+d+Jr2KzUUL1j8Mrpns/WM/WacxYlo5MMb2E5Qy2Pk1Guj6GylxsW9OnKQl1tnF8q3hG/hQ3h6VUA==
@@ -2380,6 +2394,22 @@ sveltestrap-forms-lib@hazg/sveltestrap-forms-lib:
   resolved "https://codeload.github.com/hazg/sveltestrap-forms-lib/tar.gz/7edb2ce96a6fe19d63a0206bfa535e906c07b7ef"
   dependencies:
     dequal "^2.0.2"
+
+sveltestrap-table@hazg/sveltestrap-table:
+  version "1.0.5"
+  resolved "https://codeload.github.com/hazg/sveltestrap-table/tar.gz/a320d1f52cc5b564ff544dc341c80aba6259ed5b"
+  dependencies:
+    "@iconify/iconify" ">1.0.0"
+    "@iconify/svelte" ">1.0.0"
+    svelte "^3.0.0"
+    sveltestrap "^3.13.0"
+
+sveltestrap@^3.13.0:
+  version "3.14.0"
+  resolved "https://registry.yarnpkg.com/sveltestrap/-/sveltestrap-3.14.0.tgz#890bd9b2929ef0f6cf51cfada05177642d236517"
+  integrity sha512-tg4kPiCXGxDW5DVthE42HW/B4t5Msi9yewzSsFGmjbs/S6HfLGuqq4XV7llVtoCZDG2vh0wsW6bWcvIfkDKMag==
+  dependencies:
+    "@popperjs/core" "^2.6.0"
 
 sveltestrap@bestguy/sveltestrap#v5:
   version "5.0.0-beta.3"
