@@ -1,5 +1,7 @@
 module WithUser
   extend ActiveSupport::Concern
+  include AbstractController::Callbacks # This adds before_filter
+  include Devise::Controllers::Helpers # This adds current_user
 
   # Get current user.
   # Admins can simulate user by params['user_id'] parameter

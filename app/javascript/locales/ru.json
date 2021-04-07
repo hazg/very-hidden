@@ -5,9 +5,16 @@
   "login as": "Вошли как",
   "register as": "Вы зарегистрировались",
   "enter": "Войти",
-  "should be an address": "Должно быть адресом",
+  "should be an address": "Это не похоже на адрес (",
   "where is the link?": "Где ссылка?",
-  "what are we hiding?": "Вставьте ссылку",
+  "input: what are we hiding?": "Вставьте ссылку",
+  "textarea: what are we hiding?": "Вставьте построчный список ссылок",
   "link": "Ссылка",
-  "short": "Сократить"
+  "short": "Сократить",
+  "only for users": "Доступна только для:",
+  "select placeholder": "Выбрать разрешенных пользователей",
+  "too less": "Маловато будет",
+  "expand collapse": "Раскрыть/скрыть адреса списком",
+  "submit": "Отправить на обработку",
+  "paste": "Вставить из буфера обмена"
 }

@@ -8,8 +8,9 @@ Rails.application.routes.draw do
       mount_devise_token_auth_for 'User', at: 'auth'
       get 'users/info' => 'users#info'
       resources :links
+      resources :users
     end
   end
-
+  get '/:id' => "redirect#show"
   get '*path' => 'application#index', constraints: lambda { |req| req.format == :html }
 end

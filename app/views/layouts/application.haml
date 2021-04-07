@@ -10,6 +10,10 @@
     = csp_meta_tag
     %script{ src: "/packs/bundle.js", type: "module" }
   %body
+    - if current_user
+      = current_user.email
+    - else
+      Unloggined
     = yield
     #app
     %link{ rel: "stylesheet", media: "screen", href: "/packs/bundle.css" }

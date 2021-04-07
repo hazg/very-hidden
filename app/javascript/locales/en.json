@@ -7,7 +7,14 @@
   "enter": "Enter",
   "should be an address": "Should be an address",
   "where is the link?": "Where is the link?",
-  "what are we hiding?": "Type link here",
+  "input: what are we hiding?": "Type link here",
+  "textarea: what are we hiding?": "Enter list of links",
   "link": "Link",
-  "short": "Short"
+  "short": "Short",
+  "only for users": "Only for users:",
+  "select placeholder": "Select granted users",
+  "too less": "Too less (",
+  "expand collapse": "Expand/Collapse",
+  "submit": "Send to server",
+  "paste": "Paste from clipboard"
 }

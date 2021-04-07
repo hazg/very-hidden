@@ -3,7 +3,14 @@
 */
 
 export const User = {
-  signOut: () => {
+  signOut: async () => {
+    let res = await fetch('/users/sign_out', {
+      method: 'DELETE',
+      headers: {
+        'X-CSRF-Token': document.querySelector('meta[name=csrf-token]').content,
+        'Content-Type': 'application/json',
+      },
+    })
     localStorage.removeItem('auth')
     window.location.reload()
   },

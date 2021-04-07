@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_03_085506) do
+ActiveRecord::Schema.define(version: 2021_04_03_120804) do
 
   create_table "rollups", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.string "name", null: false
@@ -34,6 +34,12 @@ ActiveRecord::Schema.define(version: 2021_04_03_085506) do
     t.index ["owner_id", "owner_type"], name: "index_shortened_urls_on_owner_id_and_owner_type"
     t.index ["unique_key"], name: "index_shortened_urls_on_unique_key", unique: true
     t.index ["url"], name: "index_shortened_urls_on_url", length: 5
+  end
+
+  create_table "shortened_urls_users", id: false, charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "shortened_url_id", null: false
+    t.index ["user_id", "shortened_url_id"], name: "index_shortened_urls_users_on_user_id_and_shortened_url_id"
   end
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
