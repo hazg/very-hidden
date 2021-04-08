@@ -2,3 +2,8 @@ ru:
   shortened_url:
     url: Ссылка
     unique_key: Защищенная ссылка
+  activerecord:
+    models:
+      user:
+        attributes:
+          password

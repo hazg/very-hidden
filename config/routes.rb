@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   namespace 'api' do
     namespace 'v1' do
       mount_devise_token_auth_for 'User', at: 'auth'
+      post 'api/v1/user/register' => 'user#register'
       get 'users/info' => 'users#info'
       resources :shortened_urls
       resources :users

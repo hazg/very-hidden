@@ -110,7 +110,7 @@
     {/if}
   </Form>
 </Card>
-
+{#if User.isLoggedIn()}
 <ApiTable bind:this={table} source="shortened_urls" bind:rows>
   <thead>
     <th>{$_('original url')}</th>
@@ -133,6 +133,7 @@
     {/each}
   </tbody>
 </ApiTable>
+{/if}
 </div>
 
 <SvelteToast />

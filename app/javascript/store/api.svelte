@@ -38,7 +38,10 @@ export async function destroy(url, params = {}, root = false) {
   params = root ? {[root]:params} : {[plural.singular(url)]: params}
   return request(url, false, {body: JSON.stringify(params)}, 'DELETE')
 }
-
+// Notify with toast
+export function notify(message){
+  toast.push(message)
+}
 
 // Make request
 export async function request(url, searchParams = false, params = {}, method) {
@@ -66,7 +69,7 @@ export async function request(url, searchParams = false, params = {}, method) {
 
   let json = false
   // If status not "no content" try to get json
-  if(res.status != 204 /* no content */ ){
+  if(res.status != 204 && res.status != 401/* no content */ ){
 
     json = await res.json()
 

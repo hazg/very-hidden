@@ -28,14 +28,14 @@ module Api
         }.to_json
       end
         #Ex:- add_index("admin_users", "username")
-      # def register
-      #   user = User.create(user_params)
-      #   if user.save!
-      #     render json: user
-      #   else
-      #     render errors: user.full_message, status: bad_request
-      #   end
-      # end
+      def register
+        user = User.create(user_params)
+        if user.save!
+          render json: user
+        else
+          render errors: user.full_message, status: bad_request
+        end
+      end
 
 
       def user_params

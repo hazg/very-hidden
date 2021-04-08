@@ -1748,8 +1748,8 @@ const User = {
   },
 
   register: async (email, password, password_confirmation) => {
-     // Get auth token by email and password
-     let res = await fetch('/api/v1/auth', {
+    // Get auth token by email and password
+    let res = await fetch('/api/v1/auth', {
       method: 'POST',
       headers: {
         'X-CSRF-Token': document.querySelector('meta[name=csrf-token]').content,
@@ -1760,12 +1760,8 @@ const User = {
         password,
         password_confirmation
       })
-     });
-    if (res.ok) { }
-    else {
-      full_messages;
-      console.log(res);
-    }
+    });
+    return res
   },
 
   login: async (email, password) => {
@@ -3641,6 +3637,10 @@ function instance$2($$self, $$props, $$invalidate) {
 		return request(url, false, { body: JSON.stringify(params) }, "DELETE");
 	}
 
+	function notify(message) {
+		toast.push(message);
+	}
+
 	async function request(url, searchParams = false, params = {}, method) {
 		url = window.location.origin + "/api/v1/" + url + ".json";
 
@@ -3665,7 +3665,7 @@ function instance$2($$self, $$props, $$invalidate) {
 		let json = false;
 
 		// If status not "no content" try to get json
-		if (res.status != 204) {
+		if (res.status != 204 && res.status != 401) {
 			json = await res.json(); /* no content */
 
 			// On errors try to show error
@@ -3711,6 +3711,7 @@ function instance$2($$self, $$props, $$invalidate) {
 		post,
 		put,
 		destroy,
+		notify,
 		request
 	});
 
@@ -3722,7 +3723,7 @@ function instance$2($$self, $$props, $$invalidate) {
 		$$self.$inject_state($$props.$$inject);
 	}
 
-	return [get, post, put, destroy, request];
+	return [get, post, put, destroy, notify, request];
 }
 
 class Api extends SvelteComponentDev {
@@ -3734,7 +3735,8 @@ class Api extends SvelteComponentDev {
 			post: 1,
 			put: 2,
 			destroy: 3,
-			request: 4
+			notify: 4,
+			request: 5
 		});
 
 		dispatch_dev("SvelteRegisterComponent", {
@@ -3777,8 +3779,16 @@ class Api extends SvelteComponentDev {
 		throw new Error("<Api>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
 	}
 
-	get request() {
+	get notify() {
 		return this.$$.ctx[4];
+	}
+
+	set notify(value) {
+		throw new Error("<Api>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+	}
+
+	get request() {
+		return this.$$.ctx[5];
 	}
 
 	set request(value) {
@@ -6724,19 +6734,19 @@ const _tree = {
       "isPage": true,
       "path": "/index",
       "id": "_index",
-      "component": () => import('./index-92123b76.js').then(m => m.default)
+      "component": () => import('./index-40fc8516.js').then(m => m.default)
     },
     {
       "isPage": true,
       "path": "/login",
       "id": "_login",
-      "component": () => import('./login-86f39361.js').then(m => m.default)
+      "component": () => import('./login-d4de0756.js').then(m => m.default)
     },
     {
       "isPage": true,
       "path": "/register",
       "id": "_register",
-      "component": () => import('./register-5fee067f.js').then(m => m.default)
+      "component": () => import('./register-ccf0e754.js').then(m => m.default)
     }
   ],
   "path": "/"

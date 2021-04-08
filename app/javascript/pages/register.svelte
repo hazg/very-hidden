@@ -12,13 +12,29 @@ let csrf = document.querySelector('meta[name=csrf-token]').content
 let param = document.querySelector('meta[name=csrf-param]').content
 
 async function formSubmit(data){
+
   let res = await User.register(email, password, passwordConfirmation)
-  if(res.errors){
-    toast.push(res.errors.join('<br />'))
-  }else{
-    User.signIn(res.token)
-    toast.push('Вы зарегистрировались '+res.data['email'])
+  let json = await res.json()
+
+  if(res.ok){
+
+    let login = await User.login(email, password)
+
+    toast.push('Вы зарегистрировались '+json.data['email'])
+
+    if(login.errors){
+      toast.push(login.errors.join('<br />'))
+    }else{
+      User.signIn(login.token)
+      toast.push('Вошли как '+login.data['email'])
+    }
+
+
+
     window.location = '/'
+  }else{
+
+    toast.push(json.errors.full_messages.join("\n"))
   }
 }
 

@@ -23,8 +23,8 @@ export const User = {
   },
 
   register: async (email, password, password_confirmation) => {
-     // Get auth token by email and password
-     let res = await fetch('/api/v1/auth', {
+    // Get auth token by email and password
+    let res = await fetch('/api/v1/auth', {
       method: 'POST',
       headers: {
         'X-CSRF-Token': document.querySelector('meta[name=csrf-token]').content,
@@ -35,12 +35,8 @@ export const User = {
         password,
         password_confirmation
       })
-     })
-    if (res.ok) { }
-    else {
-      full_messages
-      console.log(res)
-    }
+    })
+    return res
   },
 
   login: async (email, password) => {
