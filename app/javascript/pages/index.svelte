@@ -1,5 +1,5 @@
 <script>
-  import { Tooltip, InputGroupText, Button, Card, InputGroup } from 'sveltestrap'
+  import { Table, Tooltip, InputGroupText, Button, Card, InputGroup } from 'sveltestrap'
   import { User } from '.././store/user'
   import { Form, Field } from "sveltestrap-forms-lib"
   import { _ } from 'svelte-i18n'
@@ -7,11 +7,12 @@
   import Select from 'svelte-select'
   import { paste } from '../components/index/functions'
   import nope from "nope-validator"
+  import { SvelteToast, toast } from 'svelte-toast'
   // import searchUsers from '../components/index/search_users'
   // import Item from '../components/index/item'
   import { onMount } from 'svelte'
 
-  let items
+  let items, uniqueKeys
   let loaded = false
   onMount( async () => {
     items = await api.get('users')
@@ -29,8 +30,8 @@
       url
     },
     validate: (values) => schema.validate(values),
-    onSubmit: (values) => {
-      api.post( 'links', {...values, users: users } )
+    onSubmit: async (values) => {
+      uniqueKeys = await api.post( 'links', {...values, users: users } )
       console.log(values)
     }
   }
@@ -44,11 +45,10 @@
     users = e.detail
   }
 
-	const optionIdentifier = 'id'
-  const getOptionLabel = (option) => option.email
-  const getSelectionLabel = (option) => option.email
-
-
+	function linkCopy(link){
+    navigator.clipboard.writeText(link)
+    toast.push($_('Link copied') + ' ' + link)
+  }
 </script>
 <div class="themed">
 <Card>
@@ -94,7 +94,29 @@
     {/if}
   </Form>
 </Card>
+
+{#if uniqueKeys}
+  <Table>
+    <thead>
+      <th>{$_('original url')}</th>
+      <th>{$_('click to copy')}</th>
+    </thead>
+    {#each uniqueKeys as k}
+    <tr>
+      <td>{k.url}</td>
+      <td>
+        <a on:click|preventDefault={() => (linkCopy(window.location.origin+'/'+k.unique_key))} href="{window.location.origin}/{k.unique_key}">
+          {window.location.origin}/{k.unique_key}
+        </a>
+      </td>
+    </tr>
+    {/each}
+
+
+  </Table>
+{/if}
 </div>
+<SvelteToast />
 <style>
   .themed {
 

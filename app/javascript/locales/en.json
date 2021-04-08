@@ -16,5 +16,7 @@
   "too less": "Too less (",
   "expand collapse": "Expand/Collapse",
   "submit": "Send to server",
-  "paste": "Paste from clipboard"
+  "paste": "Paste from clipboard",
+  "original url": "Original URL",
+  "click to copy": "Click to copy"
 }

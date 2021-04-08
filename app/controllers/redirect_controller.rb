@@ -4,6 +4,9 @@ class RedirectController < ActionController::Metal
   include ActionController::StrongParameters
   include ActionController::Redirecting
   include ActionController::Instrumentation
+  include AbstractController::Rendering
+  include ActionView::Rendering
+  include ActionController::Rendering
   include Rails.application.routes.url_helpers
   include Shortener
   include WithUser
@@ -16,13 +19,15 @@ class RedirectController < ActionController::Metal
     allowed_users_ids = ShortenedUrlsUser.where(shortened_url_id: url[:id]).pluck(:user_id)
     if allowed_users_ids
       allowed_users_ids << current_user.id if current_user
-      if !allowed_users_ids.include?(current_user.id)
-        render text: 'permission denided', status: :forbidden
+      if !current_user || !allowed_users_ids.include?(current_user.id)
+        render plain: 'permission denided', status: :forbidden
+      else
+        redirect_to url[:url], status: :moved_permanently
       end
+    else
+      Rails.logger.info(url)
+      redirect_to url[:url], status: :moved_permanently
     end
-
-    Rails.logger.info(url)
-    redirect_to url[:url], status: :moved_permanently
     # render plain: url[:url]
   end
 end

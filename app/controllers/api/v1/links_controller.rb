@@ -12,11 +12,11 @@ module Api
         Rails.logger.debug('**************************')
         Rails.logger.debug(links)
         Rails.logger.debug('**************************')
-        users = User.where(id:
+        users = link_params[:users] ? User.where(id:
           link_params[:users].map do |u|
             u[:value]
           end
-        )
+        ) : []
         users.each{|u|
           u.shortened_urls << links
           u.save
