@@ -41,6 +41,7 @@
   // Set data after load
   function setData(){
     rows = data.rows
+    console.log(rows)
     totalItems = data.count
   }
 

@@ -1,13 +1,34 @@
 module Api
   module V1
-    class LinksController < ApiController
-      WithUser
+    class ShortenedUrlsController < ApiController
+      include WithUser
+      include WithParams
+
+      def index
+        if(current_user)
+          @pagy, @urls = pagy_with_params(Shortener::ShortenedUrl.where(owner: current_user), Shortener::ShortenedUrl)
+          render json: {
+            rows: @urls,
+            headers: [
+              {
+                title: I18n.t('shortened_url.url')
+              },
+              {
+                title: I18n.t('shortened_url.unique_key')
+              }
+            ],
+            count: get_user.shortened_urls.count
+          }
+        end
+      end
 
       def create
         urls = link_params[:url].split("\n")
-
+        urls.reverse!()
         links = urls.map do |url|
-          create_link(url, link_params)
+          ActiveRecord::Base.transaction do
+            create_link(url, link_params)
+          end
         end
         Rails.logger.debug('**************************')
         Rails.logger.debug(links)
@@ -41,8 +62,8 @@ module Api
       end
 
       def link_params
-        params['link'].permit(
-          :url, users: ['value', 'label']
+        params['shortened_url'].permit(
+          :url,  :page, :sort_by, :items, users: ['value', 'label']
         ).merge({
           owner: get_user
         })

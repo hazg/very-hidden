@@ -4,8 +4,8 @@ module WithParams
   include Pagy::Backend
   require 'pagy/extras/items'
 
-  def pagy_with_params(collection, _params = params)
-    model      = controller_name.classify.constantize
+  def pagy_with_params(collection, name, _params = params)
+    model      = name # controller_name.classify.constantize
     @sort_by   = _params['sort_by']
     @filter_by = _params['filter_by']
 

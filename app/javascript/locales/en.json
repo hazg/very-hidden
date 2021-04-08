@@ -18,5 +18,6 @@
   "submit": "Send to server",
   "paste": "Paste from clipboard",
   "original url": "Original URL",
-  "click to copy": "Click to copy"
+  "click to copy": "Click to copy",
+  "link copied": "Link copied"
 }

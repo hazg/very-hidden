@@ -29,7 +29,9 @@
     "svelte-toast": "hazg/svelte-toast",
     "sveltestrap": "bestguy/sveltestrap#v5",
     "sveltestrap-forms-lib": "hazg/sveltestrap-forms-lib",
+    "sveltestrap-paginate": "hazg/sveltestrap-paginate",
     "sveltestrap-table": "hazg/sveltestrap-table",
+    "sveltestrap-tabs": "hazg/sveltestrap-tabs",
     "turbolinks": "^5.2.0"
   },
   "version": "0.1.0",

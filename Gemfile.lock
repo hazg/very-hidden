@@ -250,6 +250,7 @@ DEPENDENCIES
   devise-i18n!
   devise_token_auth!
   haml
+  i18n
   jbuilder (~> 2.7)
   listen (~> 3.3)
   mysql2

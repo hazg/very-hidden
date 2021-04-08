@@ -1,4 +1,5 @@
-export function paste(){
+export function paste(e) {
+  e.preventDefault()
   navigator.clipboard.readText()
   .then(text => {
     let el = document.getElementById('url-input')

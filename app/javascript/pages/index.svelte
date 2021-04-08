@@ -1,5 +1,5 @@
 <script>
-  import { Table, Tooltip, InputGroupText, Button, Card, InputGroup } from 'sveltestrap'
+  import { Tooltip, InputGroupText, Button, Card, InputGroup } from 'sveltestrap'
   import { User } from '.././store/user'
   import { Form, Field } from "sveltestrap-forms-lib"
   import { _ } from 'svelte-i18n'
@@ -8,11 +8,10 @@
   import { paste } from '../components/index/functions'
   import nope from "nope-validator"
   import { SvelteToast, toast } from 'svelte-toast'
-  // import searchUsers from '../components/index/search_users'
-  // import Item from '../components/index/item'
+  import ApiTable from '../components/api_table'
   import { onMount } from 'svelte'
 
-  let items, uniqueKeys
+  let items, uniqueKeys, table, rows = []
   let loaded = false
   onMount( async () => {
     items = await api.get('users')
@@ -31,13 +30,21 @@
     },
     validate: (values) => schema.validate(values),
     onSubmit: async (values) => {
-      uniqueKeys = await api.post( 'links', {...values, users: users } )
-      console.log(values)
+      uniqueKeys = await api.post( 'shortened_urls', {...values, users: users } )
+      let links = uniqueKeys.map((x)=>{
+        return window.location.origin+'/'+x.unique_key
+      }).join("\n")
+
+      navigator.clipboard.writeText(links)
+      toast.push($_('link copied') + ' ' + links)
+      table.reload()
+
     }
   }
 
 
-  function toggle(){
+  function toggle(e){
+    e.preventDefault()
     expanded = !expanded
   }
 
@@ -47,7 +54,11 @@
 
 	function linkCopy(link){
     navigator.clipboard.writeText(link)
-    toast.push($_('Link copied') + ' ' + link)
+    toast.push($_('link copied') + ' ' + link)
+  }
+
+  function urlChange(e){
+    console.log(e)
   }
 </script>
 <div class="themed">
@@ -58,9 +69,17 @@
         rows=10
         name="url"
         bind:value={url}
+        on:change={urlChange}
         type={expanded ? 'textarea' : 'input'}
         id="url-input"
         placeholder={expanded ? $_('textarea: what are we hiding?') : $_('input: what are we hiding?')}  />
+
+      <Button id="submit-button" type="submit"><Icon name="el:ok-sign" /></Button>
+      <Tooltip target={'submit-button'}>{$_('submit')}</Tooltip>
+
+      <Button id="paste-tooltip" on:click={paste}><Icon name="fa-solid:paste" /></Button>
+      <Tooltip target={'paste-tooltip'}>{$_('paste')}</Tooltip>
+
       <Button id="collapse-tooltip" on:click={toggle}>
         {#if expanded}
           <Icon name="carbon:row-collapse" />
@@ -70,10 +89,7 @@
 
       </Button>
       <Tooltip target={'collapse-tooltip'}>{$_('expand collapse')}</Tooltip>
-      <Button id="paste-tooltip" on:click={paste}><Icon name="fa-solid:paste" /></Button>
-      <Tooltip target={'paste-tooltip'}>{$_('paste')}</Tooltip>
-      <Button id="submit-button" type="submit"><Icon name="el:ok-sign" /></Button>
-      <Tooltip target={'submit-button'}>{$_('submit')}</Tooltip>
+
     </InputGroup>
     <!-- {Item}
           loadOptions={(email) => api.get('users', {email})}
@@ -95,28 +111,32 @@
   </Form>
 </Card>
 
-{#if uniqueKeys}
-  <Table>
-    <thead>
-      <th>{$_('original url')}</th>
-      <th>{$_('click to copy')}</th>
-    </thead>
-    {#each uniqueKeys as k}
-    <tr>
-      <td>{k.url}</td>
-      <td>
-        <a on:click|preventDefault={() => (linkCopy(window.location.origin+'/'+k.unique_key))} href="{window.location.origin}/{k.unique_key}">
-          {window.location.origin}/{k.unique_key}
-        </a>
-      </td>
-    </tr>
+<ApiTable bind:this={table} source="shortened_urls" bind:rows>
+  <thead>
+    <th>{$_('original url')}</th>
+    <th>{$_('click to copy')}</th>
+  </thead>
+
+  <tbody slot="tbody">
+    {#each rows as row, index (row)}
+      <tr {index}>
+        <td>{row.url}</td>
+        <td>
+          <a
+            on:click|preventDefault={() => (linkCopy(window.location.origin+'/'+row.unique_key))}
+            href="{window.location.origin}/{row.unique_key}"
+          >
+            {window.location.origin}/{row.unique_key}
+          </a>
+        </td>
+      </tr>
     {/each}
-
-
-  </Table>
-{/if}
+  </tbody>
+</ApiTable>
 </div>
+
 <SvelteToast />
+
 <style>
   .themed {
 
@@ -136,10 +156,6 @@
     --border: #515151;
     --inputFontSize: 1.25rem;
   }
-
-  /* .themed .selectContainer{
-    padding: 8px;
-  } */
   :global(.shortener-form small.text-danger){
     display: block;
     position: absolute;
