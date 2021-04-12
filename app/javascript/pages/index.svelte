@@ -33,7 +33,7 @@
       uniqueKeys = await api.post( 'shortened_urls', {...values, users: users } )
       let links = uniqueKeys.map((x)=>{
         return window.location.origin+'/'+x.unique_key
-      }).join("\n")
+      }).reverse().join("\n")
 
       navigator.clipboard.writeText(links)
       toast.push($_('link copied') + ' ' + links)

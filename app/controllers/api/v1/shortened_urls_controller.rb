@@ -25,8 +25,8 @@ module Api
       def create
         urls = link_params[:url].split("\n")
         urls.reverse!()
-        links = urls.map do |url|
-          ActiveRecord::Base.transaction do
+        ActiveRecord::Base.transaction do
+          links = urls.map do |url|
             create_link(url, link_params)
           end
         end
