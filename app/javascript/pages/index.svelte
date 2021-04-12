@@ -62,6 +62,7 @@
   }
 </script>
 <div class="themed">
+{#if User.isLoggedIn()}
 <Card>
   <Form class="shortener-form" {...formProps}>
     <InputGroup size="lg" label={$_('link')} class="form-group-fixed-height">
@@ -110,7 +111,7 @@
     {/if}
   </Form>
 </Card>
-{#if User.isLoggedIn()}
+
 <ApiTable bind:this={table} source="shortened_urls" bind:rows>
   <thead>
     <th>{$_('original url')}</th>
